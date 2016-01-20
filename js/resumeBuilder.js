@@ -43,27 +43,26 @@ var bio = {
         var formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
         $("#header").append(formattedBioPic);
     }
-,
-}
-
+};
 bio.display();
 
-
+/* jshint forin: false */
+/* globals $, HTMLschoolStart */
 
 var work = {
     "jobs": [{
-        "employer": "Argus Auto Repair",
-        "title": "Auto Technician",
-        "location": "Hyannis, MA",
-        "dates": "2009-present",
-        "description": "Lorem ipsum dolor sit aasdasd meas"
-    },
-    // "display":()
+            "employer": "Argus Auto Repair",
+            "title": "Auto Technician",
+            "location": "Hyannis, MA",
+            "dates": "2009-present",
+            "description": "Lorem ipsum dolor sit aasdasd meas"
+        },
+        // "display":()
     ]
-}
+};
 
 function displaywork() {
-    for (job in work.jobs) {
+    for (var job in work.jobs) {
         $("#workExperience").append(HTMLworkStart);
         var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
         var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
@@ -78,6 +77,7 @@ function displaywork() {
         $(".work-entry:last").append(formattedDates);
         var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
         $(".work-entry:last").append(formattedDescription);
+
     }
 }
 displaywork();
@@ -89,23 +89,21 @@ $(document).click(function(loc) {
     var y = loc.pageY;
 
     logClicks(x, y);
-})
+});
 
 
 var projects = {
-  "projects" : [
-    {
-      "title" : "Portofolio Sample",
-      "dates" : "2015",
-      "description" : "eget, pharetra efficitur mauris. Maecenas eget nisi a orci sollicitudin",
-      "images": ["images/web3.jpg", "images/web4.jpg"],
+    "projects": [{
+        "title": "Portofolio Sample",
+        "dates": "2015",
+        "description": "eget, pharetra efficitur mauris. Maecenas eget nisi a orci sollicitudin",
+        "images": ["images/web4.jpg", "images/web2.jpg", "images/web3.jpg"],
         "url": "http://www.google.com"
-      }
-    ]
-  }
+    }]
+};
 
 projects.display = function() {
-    for (project in projects.projects) {
+    for (var project in projects.projects) {
         $("#projects").append(HTMLprojectStart);
 
         var formattedTitle = HTMLprojectTitle.replace("%data%",
@@ -120,23 +118,21 @@ projects.display = function() {
             projects.projects[project].description);
         $(".project-entry:last").append(formattedDescription);
 
-        //if (projects.projects[project].images.length > 0)
-            for (image in projects.projects[project].images)
-                var formattedImage = HTMLprojectImage.replace("%data%",
-                    projects.projects[project].images[image]);
-                $(".project-entry:last").append(formattedImage);
 
-                var formattedImage = HTMLprojectImage.replace("%data%",
-                  projects.projects[project].images[image]);
-                $(".project-entry:last").append(formattedImage);
+        var formattedImage0 = HTMLprojectImage.replace("%data%",
+            projects.projects[project].images[0]);
+        $(".project-entry:last").append(formattedImage0);
 
-                var formattedImage = HTMLprojectImage.replace("%data%",
-                  projects.projects[project].images[image]);
-                $(".project-entry:last").append(formattedImage);
+        var formattedImage1 = HTMLprojectImage.replace("%data%",
+            projects.projects[project].images[1]);
+        $(".project-entry:last").append(formattedImage1);
 
+        var formattedImage2 = HTMLprojectImage.replace("%data%",
+            projects.projects[project].images[2]);
+        $(".project-entry:last").append(formattedImage2);
 
     }
-}
+};
 
 projects.display();
 
@@ -156,13 +152,11 @@ var education = {
         "school": "Udacity",
         "dates": "2015-2016",
         "url": "http://www.udacity.com"
-    }
-    // "display":(),
-    ]
-}
+    }]
+};
 
 function displayEducation() {
-    for (school in education.schools) {
+    for (var school in education.schools) {
         $("#education").append(HTMLschoolStart);
 
         var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
@@ -178,15 +172,15 @@ function displayEducation() {
 
         var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
         $(".education-entry:last").append(formattedMajor);
-    };
-};
+    }
+}
 displayEducation();
 
 
 
 function displayOnlineEducation() {
     $("#education").append(HTMLonlineClasses);
-    for (course in education.onlineCourses) {
+    for (var course in education.onlineCourses) {
         $("#education").append(HTMLschoolStart);
 
         var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
